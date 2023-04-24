@@ -25,7 +25,8 @@ public class Manager extends Employee{
     public static void showMngOptions(){
         System.out.println("\n1. Add Employee" +
                 "\n2. Add Item to Menu" +
-                "\n3. Check Elements in Menu");
+                "\n3. Check Elements in Menu\n"+
+                "4. Cancel Operation\n");
     }
 
 

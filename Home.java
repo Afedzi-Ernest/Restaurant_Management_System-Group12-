@@ -22,15 +22,17 @@ public class Home extends Manager {
                 """
 
                         ///////////////////////////////////////////////////////////////
-                        ///      WELCOME                                               ///
-                                   ------ [Main Menu] ---------\s
+                        ///                         WELCOME                         ///
+                                           ------ [Main Menu] ---------\s
                         [1]. Log In\s
-                        -----------------
+                        ----------------------------------------------------------- ///
                         [2]. Quit\s
+                        ----------------------------------------------------------- ///
                         Select an option to continue:\s""");
 
         getUserChoice();
     }
+
 
     public static void getUserChoice(){
         userChoice = input.nextInt();
@@ -41,6 +43,7 @@ public class Home extends Manager {
 
                         [1]. Log In as an Employee
                         [2]. Log In as a Manager
+                        [3]. Return To Previous Page
                         Select an option to continue:\s""");
                 manageLogIn();
             }
@@ -113,6 +116,26 @@ public class Home extends Manager {
                     System.out.println("password mismatch");
                     showMainMenu();
                 }
+            }
+            case 3->{
+                int userChoice;
+                System.out.print(
+                        """
+        
+                                ///////////////////////////////////////////////////////////////
+                                ///                         WELCOME                         ///
+                                                   ------ [Main Menu] ---------\s
+                                [1]. Log In\s
+                                ----------------------------------------------------------- ///
+                                [2]. Quit\s
+                                ----------------------------------------------------------- ///
+                                Select an option to continue:\s""");
+
+                getUserChoice();
+            }
+            default -> {
+                System.out.println("Invalid input, please choice another choice: ");
+                getUserChoice();
             }
         }
     }
