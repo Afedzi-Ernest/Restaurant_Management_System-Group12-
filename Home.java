@@ -48,6 +48,7 @@ public class Home extends Manager {
                 manageLogIn();
             }
             case 2 -> System.out.println("Program Exited");
+            default -> throw new IllegalStateException("Unexpected value: " + userChoice);
         }
     }
 
@@ -95,15 +96,39 @@ public class Home extends Manager {
                     userChoice = input.nextInt();
                     switch (userChoice){
                         case 1:
-                            addNewStaff();
-                            System.out.print("Do you want to add another Staff (y / n) : ");
-                            char mngInput = stringinput.next().charAt(0);
-                            switch (mngInput) {
-                                case 'y': case'Y':
-                                    addNewStaff();
-                                case 'n' : case 'N':
-                                    showMngOptions();
+                            while(userChoice != 4){
+                                addNewStaff();
+                                System.out.print("Do you want to add another Staff (y / n) : ");
+                                char mngInput = stringinput.next().charAt(0);
+                                switch (mngInput) {
+                                    case 'y':
+                                    case 'Y':
+                                        addNewStaff();
+                                    case 'n':
+                                    case 'N':
+                                        showMngOptions();
+                                        userChoice = input.nextInt();
+                                        if(userChoice != 4){
+                                            showMngOptions();
+                                            userChoice = input.nextInt();
+                                        }
+                                        else if (userChoice == 4){
+                                            System.out.print("""
+                        
+                                                [1]. Log In as an Employee
+                                                [2]. Log In as a Manager
+                                                [3]. Return To Previous Page
+                                                Select an option to continue:\s""");
+                                                                    manageLogIn();
+                                        }
+                                        else if(userChoice == 5){
+                                            System.out.println("Program exits!\n");
+                                            return;
+                                        }
+                                }
                             }
+
+
                             break;
                         case 2:
                             break;
