@@ -67,7 +67,7 @@ public class Menu extends Orders{
         for(int b = 0; b < (itemsAdded.length)-1; b++){
             System.out.print(menuArray[itemsAdded[b]-1] + ", ");//123
         }
-        System.out.print(" and " + menuArray[itemsAdded[size-1]-1]);
+        System.out.print( menuArray[itemsAdded[size-1]-1] + " and ");
         System.out.print("]");
         System.out.println();
 
@@ -158,7 +158,7 @@ public class Menu extends Orders{
     public static void showMenu(){
         System.out.println(
                 "\n***** [WELCOME , MAKE A SELECTION FROM THE MENU BELOW] *******\n" +
-                        " \tFOOD \t\t\t\t\t   PRICE IN GH₵\n" +
+                        " \tFOOD \t\t\t\t   PRICE IN GH₵\n" +
                         "1. BANKU AND OKRO \t\t\t\t 45\n" +
                         "2. JOLLOF RICE AND CHICKEN \t\t 35\n"+
                         "3. YAM AND KONTOMIRE \t\t\t 25\n" +
