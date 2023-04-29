@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Employee {
     int employeeId;
     String emppassword;
@@ -14,14 +15,9 @@ public class Employee {
     static List<Integer> EmployeesId = new ArrayList<>();
 
     public static boolean verifyEmployee(String employeename){
-         // Check if employeename is numeric
-    
-
+        employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
         for(String name : employeesList){
-            if(employeename.matches("-?\\d+")){
-                return false;
-            }
-            else if(name.equals(employeename)){
+            if(name.equals(employeename)){
                 return (true);
             }
         }
@@ -29,6 +25,7 @@ public class Employee {
     }
 
     public static boolean verifyEmployeePassword(String employeepswd){
+        employeespassword= Manager.loadListFromFile(Manager.FILE_NAME2);
         for(String pswd : employeespassword){
             if(pswd.equals(employeepswd)){
                 return (true);
