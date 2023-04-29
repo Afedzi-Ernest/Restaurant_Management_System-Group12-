@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Employee {
     int employeeId;
     int emppassword;
@@ -13,8 +14,14 @@ public class Employee {
     static List<Integer> EmployeesId = new ArrayList<>();
 
     public static boolean verifyEmployee(String employeename){
+         // Check if employeename is numeric
+    
+
         for(String name : employeesList){
-            if(name.equals(employeename)){
+            if(employeename.matches("-?\\d+")){
+                return false;
+            }
+            else if(name.equals(employeename)){
                 return (true);
             }
         }

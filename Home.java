@@ -30,12 +30,22 @@ public class Home extends Manager {
                         ----------------------------------------------------------- ///
                         Select an option to continue:\s""");
 
+        
+
         getUserChoice();
+        
     }
 
 
     public static void getUserChoice(){
         userChoice = input.nextInt();
+        if(userChoice <= 0 || userChoice >=3) {
+            System.out.println("");
+            System.out.print("Oooops out of Range (Enter 1 or 2)");
+            System.out.println("");
+            showMainMenu();
+
+        }
 
         switch (userChoice) {
             case 1 -> {
@@ -71,13 +81,16 @@ public class Home extends Manager {
 
                 }
                 else if (Manager.verifyEmployee(empname) && !(Manager.verifyEmployeePassword(emppassword))) {
-                    System.out.println("Incorrect Password");
+                    System.out.println("\n\nIncorrect Password");
+                    showMainMenu();
                 }
                 else if (!Manager.verifyEmployee(empname) && (Manager.verifyEmployeePassword(emppassword))) {
-                    System.out.println("Name not recognized");
+                    System.out.println("\n\nName not recognized");
+                    showMainMenu();
                 }
+                
                 else{
-                    System.out.println("Access Denied");
+                    System.out.println("Incorrect User Details");
                     showMainMenu();
                 }
 
@@ -137,10 +150,21 @@ public class Home extends Manager {
                     }
                 }
 
-                else  {
-                    System.out.println("password mismatch");
+                else if(!verifyManagerName(mngName) && verifyManagerPassword(mngpassword)){
+                    System.out.println("Admin not recognized");
                     showMainMenu();
                 }
+
+                else if(!verifyManagerName(mngName) && !verifyManagerPassword(mngpassword)){
+                    System.out.println("Incorrect Admin Details");
+                    showMainMenu();
+                }
+
+                else if(verifyManagerName(mngName) && !verifyManagerPassword(mngpassword)){
+                    System.out.println("Incorrect Password");
+                    showMainMenu();
+                }
+                
             }
             case 3->{
                 int userChoice;

@@ -100,7 +100,7 @@ public class Menu extends Orders{
     public static void showMenu(){
         System.out.println(
                 "\n***** [WELCOME , MAKE A SELECTION FROM THE MENU BELOW] *******\n" +
-                        " \tFOOD \t\t\t\t\t   PRICE IN GH₵\n" +
+                        " \tFOOD \t\t\t\t   PRICE IN GH₵\n" +
                         "1. BANKU AND OKRO \t\t\t\t 45\n" +
                         "2. JOLLOF RICE AND CHICKEN \t\t 35\n"+
                         "3. YAM AND KONTOMIRE \t\t\t 25\n" +
