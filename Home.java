@@ -119,7 +119,7 @@ public class Home extends Manager {
                                                 [2]. Log In as a Manager
                                                 [3]. Return To Previous Page
                                                 Select an option to continue:\s""");
-                                                                    manageLogIn();
+                                                manageLogIn();
                                         }
                                         else if(userChoice == 5){
                                             System.out.println("Program exits!\n");

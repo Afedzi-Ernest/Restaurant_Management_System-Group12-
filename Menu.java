@@ -11,8 +11,44 @@ public class Menu extends Orders{
 
     public static void getEmployeeOption() {
         Scanner empInput = new Scanner(System.in);
+        int choice=0, searchResult = 0;
+
         System.out.print("How many items is the customer purchasing: ");
-        int choice = empInput.nextInt();
+       choice = empInput.nextInt();
+
+//        if(choice <= 1 || choice >= 5){
+//            System.out.println("Invalid input, please re-choose: \n");
+//            choice = empInput.nextInt();
+//        }
+//        else if( choice !=99){
+//            System.out.println("Invalid input, please re-choose: \n");
+//            choice = empInput.nextInt();
+//        }
+//
+//        if(choice == 99){
+//            System.out.println("Logged out\n\n");
+//            System.out.print("""
+//
+//                                [1]. Log In as an Employee
+//                                [2]. Log In as a Manager
+//                                [3]. Return To Previous Page
+//                                Select an option to continue:\s""");
+//            Home.manageLogIn();
+//        }
+
+//       int[] choose = new int[6];
+//       choose[0]=1;choose[1]=2;choose[2]=3;choose[3]=4;choose[4]=5;choose[5]=99;
+//
+//       for(int i=0; i< 6; i++){
+//           if(choice != choose[i]){
+//                searchResult = -1;
+//           }
+//       }
+//
+//        if(searchResult == -1){
+//            System.out.println("Invalid choice, again: ");
+//            choice = empInput.nextInt();
+//        }
         int itemsAdded[] = new int[choice];
         for(int a = 0; a < choice; a++) {
             System.out.print("Enter Customer's purchase "+ (a+1) +": ");
@@ -35,13 +71,13 @@ public class Menu extends Orders{
         System.out.print("]");
         System.out.println();
 
-        System.out.print("Is that the correct customer's list? \t (press y to continue or n to restart step): ");
+        System.out.print("Is that the correct customer's list? \n (press y to continue or n to restart step): ");
         char input = empInput.next().charAt(0);
         switch (input){
             case 'y': case'Y':
                 System.out.print("\n\nITEMS\t\t\t\t\t PRICE ( ₵ )\n");
                 for ( int a = 0; a < itemsAdded.length; a++ ){
-                    System.out.println(menuArray[itemsAdded[a]-1] + "\t\t\t" + menuPrice[itemsAdded[a]-1]);
+                    System.out.println(menuArray[itemsAdded[a]-1] + "\t\t\t\t" + menuPrice[itemsAdded[a]-1]);
                 }
 
                 //calculating total amount to be paid
@@ -69,7 +105,29 @@ public class Menu extends Orders{
                     showMenu();
                     break;
                 case 1:
-                    Home.showMainMenu();
+                    System.out.println("Logged out\n\n");
+                            System.out.print("""
+
+                                [1]. Log In as an Employee
+                                [2]. Log In as a Manager
+                                [3]. Return To Previous Page
+                                Select an option to continue:\s""");
+                             Home.manageLogIn();
+                    break;
+//                case 99:
+//                    System.out.println("Do you wish to log out from the page?\n[1]. Yes\n[2]. No\n");
+//                    int b = empInput.nextInt();
+//                    switch (b){
+//                        case 1:
+//                            System.out.println("Logged out\n\n");
+//                            System.out.print("""
+//
+//                                [1]. Log In as an Employee
+//                                [2]. Log In as a Manager
+//                                [3]. Return To Previous Page
+//                                Select an option to continue:\s""");
+//                             getEmployeeOption();
+//                    }
             }
 
             // showMenu();
@@ -105,7 +163,7 @@ public class Menu extends Orders{
                         "2. JOLLOF RICE AND CHICKEN \t\t 35\n"+
                         "3. YAM AND KONTOMIRE \t\t\t 25\n" +
                         "4. PLAIN RICE AND FISH \t\t\t 30\n" +
-                        "5. FUFU AND GROUNDNUT SOUP \t\t 45\n "
+                        "5. FUFU AND GROUNDNUT SOUP \t\t 45\n\n "
 
         );
         getEmployeeOption();
