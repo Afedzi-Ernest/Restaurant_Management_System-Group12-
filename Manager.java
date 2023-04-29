@@ -66,10 +66,11 @@ public class Manager extends Employee{
 
     public static void showMngOptions(){
         System.out.println("\n1. Add Employee" +
-                "\n2. Add Item to Menu" +
-                "\n3. Check Elements in Menu\n"+
+                "\n2. Remove Employee " +
+                "\n3. Add Item to Menu\n"+
                 "4. Previous Page\n" +
-                "5. Cancel Operation\n"
+                "5. View All Employees\n"+
+                "6. Cancel Operation\n"
         );
     }
 
@@ -117,12 +118,34 @@ public class Manager extends Employee{
 
         //adding employee to the employee list
         new Manager(newId,newPswd,newStaff,newStaffPosition,newStaffHours);
+        Home.newOptions();
+    }
 
+    public static void removeStaff(String name) {
+        employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
+        Iterator<String> iterator = employeesList.iterator();
+        while (iterator.hasNext()) {
+            String seen = iterator.next();
+            if (seen.equals(name)) {
+                iterator.remove();
+            }
+        }
+        Manager.saveListToFile(employeesList, Manager.FILE_NAME);
+        List<String> employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
+        if (employeesList.isEmpty()) {
+            System.out.println("Employee list is empty.");
+        } else {
+            System.out.println("\nEmployee list:");
+            for (String employee : employeesList) {
+                System.out.println(employee);
+            }
+        }
+        showMngOptions();
     }
 
     public static void addNewMenuItem(){
         System.out.println("Enter item name: ");
-        String itemName = input.next();
+        String itemName = stringinput.next();
 
         System.out.println("Enter item price: ");
         int itemPrice = input.nextInt();

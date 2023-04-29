@@ -1,4 +1,5 @@
 
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -14,6 +15,28 @@ public class Home extends Manager {
         super();
     }
 
+    public static void newOptions() {
+        System.out.print("Do you want to add another Staff (y / n) : ");
+        char mngInput = stringinput.next().charAt(0);
+        switch (mngInput) {
+            case 'y':
+            case 'Y':
+                addNewStaff();
+            case 'n':
+            case 'N':
+                showMngOptions();
+                userChoice = input.nextInt();
+                System.out.print("""
+                        
+                                                [1]. Log In as an Employee
+                                                [2]. Log In as a Manager
+                                                [3]. Return To Previous Page
+                                                Select an option to continue:\s""");
+                manageLogIn();
+
+
+        }
+    }
 
 
     public static void showMainMenu(){
@@ -21,8 +44,8 @@ public class Home extends Manager {
         System.out.print(
                 """
 
-                        ///////////////////////////////////////////////////////////////
-                        ///                         WELCOME                         ///
+                        
+                                            WELCOME TO GROUP 12 RESTAURANT               ///
                                            ------ [Main Menu] ---------\s
                         [1]. Log In\s
                         ----------------------------------------------------------- ///
@@ -111,7 +134,7 @@ public class Home extends Manager {
                         case 1:
                             while(userChoice != 4){
                                 addNewStaff();
-                                System.out.print("Do you want to add another Staff (y / n) : ");
+//                                System.out.print("Do you want to add another Staff (y / n) : ");
                                 char mngInput = stringinput.next().charAt(0);
                                 switch (mngInput) {
                                     case 'y':
@@ -144,9 +167,28 @@ public class Home extends Manager {
 
                             break;
                         case 2:
+                            System.out.println("Enter name of Employee to be removed: ");
+                            String remName = stringinput.next();
+                            removeStaff(remName);
 
                             break;
                         case 3:
+                            addNewMenuItem();
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            Manager.saveListToFile(Manager.employeesList, Manager.FILE_NAME);
+                            List<String> employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
+                            if (employeesList.isEmpty()) {
+                                System.out.println("Employee list is empty.");
+                            } else {
+                                System.out.println("\nEmployee list:");
+                                for (String employee : employeesList) {
+                                    System.out.println(employee);
+                                }
+                            }
+                            showMngOptions();
                             break;
                     }
                 }
@@ -172,7 +214,7 @@ public class Home extends Manager {
                 System.out.print(
                         """
         
-                                ///////////////////////////////////////////////////////////////
+                               
                                 ///                         WELCOME                         ///
                                                    ------ [Main Menu] ---------\s
                                 [1]. Log In\s

@@ -70,7 +70,7 @@ public class Menu extends Orders{
         for(int b = 0; b < (itemsAdded.length)-1; b++){
             System.out.print(menuArray[itemsAdded[b]-1] + ", ");//123
         }
-        System.out.print( menuArray[itemsAdded[size-1]-1] + " and ");
+        System.out.print( " and "+ menuArray[itemsAdded[size-1]-1] );
         System.out.print("]");
         System.out.println();
 
@@ -152,6 +152,14 @@ public class Menu extends Orders{
     public Menu(String itemtoAdd,int itemtoAddPrice){
         MenuList.add(itemtoAdd);
         MenuListPrice.add(itemtoAddPrice);
+        Manager.saveListToFile(MenuList,FILE_NAME);
+    }
+
+    static void printMenu(){
+        MenuList = Manager.loadListFromFile(FILE_NAME);
+        for(String name : MenuList){
+            System.out.println(name);
+        }
     }
 
     public Menu(){
