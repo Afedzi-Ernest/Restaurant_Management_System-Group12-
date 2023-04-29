@@ -1,9 +1,51 @@
 
+import java.io.*;
+import java.util.*;
 import java.util.Scanner;
 
 public class Manager extends Employee{
     static String adminname = "admin";
     static int adminpswd = 9999;
+
+    public static final String FILE_NAME = "employee_list";
+    public static final String FILE_NAME2 = "employee_password";
+
+    public static void saveListToFile(List<String> list, String fileName) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            outputStream.writeObject(list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveListToFile2(List<Integer> list, String fileName) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            outputStream.writeObject(list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<String> loadListFromFile(String fileName) {
+        List<String> list = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            list = (List<String>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static List<Integer> loadListFromFile2(String fileName) {
+        List<Integer> list = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            list = (List<Integer>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
     static Scanner stringinput = new Scanner(System.in);
     static Scanner input = new Scanner(System.in);
@@ -35,9 +77,9 @@ public class Manager extends Employee{
 
 
     public Manager(){
-        new Employee(1,111,"Ernest","Staff",4);
-        new Employee(2,112,"Jackson","Staff",5);
-        new Employee(3,113,"Jackson","manager",10);
+        new Employee(1,"111","Ernest","Staff",4);
+        new Employee(2,"112","Jackson","Staff",5);
+        new Employee(3,"113","Jackson","manager",10);
         new Menu("BANKU AND OKRO ",45);
         new Menu("JOLLOF RICE AND CHICKEN ",35);
         new Menu("YAM AND KONTOMIRE  ",25);
@@ -47,11 +89,13 @@ public class Manager extends Employee{
     }
 
 
-    public Manager(int a, int b, String c, String d, int e){
+    public Manager(int a, String b, String c, String d, int e){
 //        new Employee(a,b,c,d,e);
         employeesList.add(c);
         employeespassword.add(b);
         EmployeesId.add(a);
+        saveListToFile(employeesList,FILE_NAME);
+        saveListToFile(employeespassword,FILE_NAME2);
     }
     public static void addNewStaff(){
         System.out.println("Provide the following details of the new Staff");
@@ -60,7 +104,7 @@ public class Manager extends Employee{
         int newId = input.nextInt();
 
         System.out.println("Staff Password:");
-        int newPswd = input.nextInt();
+        String newPswd = input.next();
 
         System.out.println("Staff Name: ");
         String newStaff = stringinput.next();
@@ -74,6 +118,17 @@ public class Manager extends Employee{
         //adding employee to the employee list
         new Manager(newId,newPswd,newStaff,newStaffPosition,newStaffHours);
 
+    }
+
+    public static void addNewMenuItem(){
+        System.out.println("Enter item name: ");
+        String itemName = input.next();
+
+        System.out.println("Enter item price: ");
+        int itemPrice = input.nextInt();
+
+        //adding item to the menu list
+        new Menu(itemName,itemPrice);
     }
 
 

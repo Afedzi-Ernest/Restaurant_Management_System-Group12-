@@ -9,6 +9,9 @@ public class Menu extends Orders{
     static List<String> MenuList = new ArrayList<>();
     static List<Integer> MenuListPrice = new ArrayList<>();
 
+    public static final String FILE_NAME = "menu_list";
+    public static final String FILE_NAME2 = "menu_price";
+
     public static void getEmployeeOption() {
         Scanner empInput = new Scanner(System.in);
         System.out.print("How many items is the customer purchasing: ");
