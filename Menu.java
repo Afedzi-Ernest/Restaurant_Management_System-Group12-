@@ -31,11 +31,11 @@ public class Menu extends Orders{
         for(int b = 0; b < (itemsAdded.length)-1; b++){
             System.out.print(menuArray[itemsAdded[b]-1] + ", ");//123
         }
-        System.out.print(" and " + menuArray[itemsAdded[size-1]-1]);
+        System.out.print( menuArray[itemsAdded[size-1]-1] + " and ");
         System.out.print("]");
         System.out.println();
 
-        System.out.print("Is that the correct customer's list? \t (press y to continue or n to restart step): ");
+        System.out.print("Is that the correct customer's list? \n (press y to continue or n to restart step): ");
         char input = empInput.next().charAt(0);
         switch (input){
             case 'y': case'Y':

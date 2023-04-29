@@ -6,7 +6,7 @@ public class Home extends Manager {
     static int userChoice;
     static int userChoice2;
     static String empname;
-    static int emppassword;
+    static String emppassword;
     static String mngName;
     static int mngpassword;
 
@@ -71,9 +71,9 @@ public class Home extends Manager {
                 System.out.print("\n Enter your name: ");
                 empname = input.next();
                 System.out.print(" Enter your Password: ");
-                emppassword = input.nextInt();
+                emppassword = input.next();
 
-                //verify employee login
+                //ver11ify employee login
 
                 if(Manager.verifyEmployee(empname) && (Manager.verifyEmployeePassword(emppassword))){
                     System.out.print("\n\nLogged in as " + empname);

@@ -35,9 +35,9 @@ public class Manager extends Employee{
 
 
     public Manager(){
-        new Employee(1,111,"Ernest","Staff",4);
-        new Employee(2,112,"Jackson","Staff",5);
-        new Employee(3,113,"Jackson","manager",10);
+        new Employee(1,"111","Ernest","Staff",4);
+        new Employee(2,"112","Jackson","Staff",5);
+        new Employee(3,"113","Jackson","manager",10);
         new Menu("BANKU AND OKRO ",45);
         new Menu("JOLLOF RICE AND CHICKEN ",35);
         new Menu("YAM AND KONTOMIRE  ",25);
@@ -47,7 +47,7 @@ public class Manager extends Employee{
     }
 
 
-    public Manager(int a, int b, String c, String d, int e){
+    public Manager(int a, String b, String c, String d, int e){
 //        new Employee(a,b,c,d,e);
         employeesList.add(c);
         employeespassword.add(b);
@@ -60,7 +60,7 @@ public class Manager extends Employee{
         int newId = input.nextInt();
 
         System.out.println("Staff Password:");
-        int newPswd = input.nextInt();
+        String newPswd = input.next();
 
         System.out.println("Staff Name: ");
         String newStaff = stringinput.next();

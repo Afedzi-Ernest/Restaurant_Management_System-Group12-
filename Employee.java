@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Employee {
     int employeeId;
-    int emppassword;
+    String emppassword;
     String Name;
     String position;
     int hours;
 
     static List<String> employeesList = new ArrayList<>();
-    static List<Integer> employeespassword = new ArrayList<>();
+    static List<String> employeespassword = new ArrayList<>();
     static List<Integer> EmployeesId = new ArrayList<>();
 
     public static boolean verifyEmployee(String employeename){
@@ -28,9 +28,9 @@ public class Employee {
         return false;
     }
 
-    public static boolean verifyEmployeePassword(int employeepswd){
-        for(int pswd : employeespassword){
-            if(pswd == employeepswd){
+    public static boolean verifyEmployeePassword(String employeepswd){
+        for(String pswd : employeespassword){
+            if(pswd.equals(employeepswd)){
                 return (true);
             }
         }
@@ -46,7 +46,7 @@ public class Employee {
         hours = 0;
     }
 
-    public Employee(int employeeId,int emppassword, String Name, String position, int hours){
+    public Employee(int employeeId,String emppassword, String Name, String position, int hours){
         EmployeesId.add(employeeId);
         employeesList.add(Name);
         employeespassword.add(emppassword);
@@ -61,7 +61,7 @@ public class Employee {
         return employeeId;
     }
 
-    public int getEmppassword() {
+    public String getEmppassword() {
         return emppassword;
     }
 
@@ -89,7 +89,7 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public void setEmppassword(int emppassword) {
+    public void setEmppassword(String emppassword) {
         this.emppassword = emppassword;
     }
     public void setPosition(String position) {
