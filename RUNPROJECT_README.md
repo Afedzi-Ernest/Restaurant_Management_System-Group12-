@@ -15,4 +15,6 @@ As the program is started , the new Employee list is empty meaning you can't try
 After the Manager adds a new Employee, the details provided can then be used to log in as a new employee.
 
 
-
+Logging In
+Old employee: Name-> Ernest   Password-> 111
+Manager : Name -> admin       Password-> 9999
