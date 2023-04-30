@@ -79,8 +79,6 @@ public class Manager extends Employee{
 
     public Manager(){
         new Employee(1,"111","Ernest","Staff",4);
-        new Employee(2,"112","Jackson","Staff",5);
-        new Employee(3,"113","Jackson","manager",10);
         new Menu("BANKU AND OKRO ",45);
         new Menu("JOLLOF RICE AND CHICKEN ",35);
         new Menu("YAM AND KONTOMIRE  ",25);
@@ -95,42 +93,51 @@ public class Manager extends Employee{
         employeesList.add(c);
         employeespassword.add(b);
         EmployeesId.add(a);
-        saveListToFile(employeesList,FILE_NAME);
-        saveListToFile(employeespassword,FILE_NAME2);
+//        saveListToFile(employeesList,FILE_NAME);
+//        saveListToFile(employeespassword,FILE_NAME2);
     }
+
+    public Manager(String b, String c){
+//        new Employee(a,b,c,d,e);
+        newemployeeList.add(c);
+        newemployeepassword.add(b);
+        saveListToFile(newemployeeList,FILE_NAME);
+        saveListToFile(newemployeepassword,FILE_NAME2);
+    }
+
     public static void addNewStaff(){
         System.out.println("Provide the following details of the new Staff");
 
-        System.out.println("Staff Id:");
-        int newId = input.nextInt();
-
-        System.out.println("Staff Password:");
-        String newPswd = input.next();
+//        System.out.println("Staff Id:");
+//        int newId = input.nextInt();
 
         System.out.println("Staff Name: ");
         String newStaff = stringinput.next();
 
-        System.out.println("Staff Position: ");
-        String newStaffPosition = stringinput.next();
+        System.out.println("Staff Password:");
+        String newPswd = input.next();
 
-        System.out.println("Staff hours: ");
-        int newStaffHours = input.nextInt();
+//        System.out.println("Staff Position: ");
+//        String newStaffPosition = stringinput.next();
+//
+//        System.out.println("Staff hours: ");
+//        int newStaffHours = input.nextInt();
 
         //adding employee to the employee list
-        new Manager(newId,newPswd,newStaff,newStaffPosition,newStaffHours);
+        new Manager(newPswd,newStaff);
         Home.newOptions();
     }
 
     public static void removeStaff(String name) {
-        employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
-        Iterator<String> iterator = employeesList.iterator();
+        newemployeeList = Manager.loadListFromFile(Manager.FILE_NAME);
+        Iterator<String> iterator = newemployeeList.iterator();
         while (iterator.hasNext()) {
             String seen = iterator.next();
             if (seen.equals(name)) {
                 iterator.remove();
             }
         }
-        Manager.saveListToFile(employeesList, Manager.FILE_NAME);
+        Manager.saveListToFile(newemployeeList, Manager.FILE_NAME);
         List<String> employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
         if (employeesList.isEmpty()) {
             System.out.println("Employee list is empty.");
@@ -140,7 +147,6 @@ public class Manager extends Employee{
                 System.out.println(employee);
             }
         }
-        showMngOptions();
     }
 
     public static void addNewMenuItem(){
@@ -152,6 +158,8 @@ public class Manager extends Employee{
 
         //adding item to the menu list
         new Menu(itemName,itemPrice);
+
+        Home.showMainMenu();
     }
 
 

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu extends Orders{
+public class Menu{
 
     static List<String> MenuList = new ArrayList<>();
     static List<Integer> MenuListPrice = new ArrayList<>();
@@ -111,9 +111,10 @@ public class Menu extends Orders{
                     System.out.println("Logged out\n\n");
                             System.out.print("""
 
-                                [1]. Log In as an Employee
-                                [2]. Log In as a Manager
-                                [3]. Return To Previous Page
+                                [1]. Log In as an Old Employee
+                                [2]. Log In as a New Employee
+                                [3]. Log In as a Manager
+                                [4]. Return To Previous Page
                                 Select an option to continue:\s""");
                              Home.manageLogIn();
                     break;

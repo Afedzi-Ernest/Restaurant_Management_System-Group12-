@@ -74,9 +74,10 @@ public class Home extends Manager {
             case 1 -> {
                 System.out.print("""
 
-                        [1]. Log In as an Employee
-                        [2]. Log In as a Manager
-                        [3]. Return To Previous Page
+                        [1]. Log In as an Old Employee
+                        [2]. Log In as a new Employee
+                        [3]. Log In as a Manager
+                        [4]. Return To Previous Page
                         Select an option to continue:\s""");
                 manageLogIn();
             }
@@ -96,7 +97,35 @@ public class Home extends Manager {
                 System.out.print(" Enter your Password: ");
                 emppassword = input.next();
 
-                //ver11ify employee login
+                if(veriryOldEmployee(empname) && (verifyOldEmployeePassword(emppassword))){
+                    System.out.print("\n\nLogged in as " + empname);
+                    Menu.showMenu();
+
+                }
+                else if (veriryOldEmployee(empname) && !(verifyOldEmployeePassword(emppassword))) {
+                    System.out.println("\n\nIncorrect Password");
+                    showMainMenu();
+                }
+                else if (!veriryOldEmployee(empname) && (verifyOldEmployeePassword(emppassword))) {
+                    System.out.println("\n\nName not recognized");
+                    showMainMenu();
+                }
+
+                else{
+                    System.out.println("Incorrect User Details");
+                    showMainMenu();
+                }
+
+
+
+            }
+            case 2 -> {
+                System.out.print("\n Enter your name: ");
+                empname = input.next();
+                System.out.print(" Enter your Password: ");
+                emppassword = input.next();
+
+                //verify employee login
 
                 if(Manager.verifyEmployee(empname) && (Manager.verifyEmployeePassword(emppassword))){
                     System.out.print("\n\nLogged in as " + empname);
@@ -111,7 +140,7 @@ public class Home extends Manager {
                     System.out.println("\n\nName not recognized");
                     showMainMenu();
                 }
-                
+
                 else{
                     System.out.println("Incorrect User Details");
                     showMainMenu();
@@ -119,7 +148,8 @@ public class Home extends Manager {
 
 
             }
-            case 2 -> {
+
+            case 3 -> {
                 System.out.print("\nEnter Manager name: ");
                 mngName = input.next();
                 System.out.print("Enter Manager password: ");
@@ -144,7 +174,7 @@ public class Home extends Manager {
                                     case 'N':
                                         showMngOptions();
                                         userChoice = input.nextInt();
-                                        if(userChoice != 4){
+                                        if(userChoice != 7){
                                             showMngOptions();
                                             userChoice = input.nextInt();
                                         }
@@ -170,12 +200,14 @@ public class Home extends Manager {
                             System.out.println("Enter name of Employee to be removed: ");
                             String remName = stringinput.next();
                             removeStaff(remName);
-
+                            showMainMenu();
                             break;
                         case 3:
                             addNewMenuItem();
+                            showMainMenu();
                             break;
                         case 4:
+                            showMainMenu();
                             break;
                         case 5:
                             Manager.saveListToFile(Manager.employeesList, Manager.FILE_NAME);
@@ -187,9 +219,16 @@ public class Home extends Manager {
                                 for (String employee : employeesList) {
                                     System.out.println(employee);
                                 }
+                                for (String employee : newemployeeList) {
+                                    System.out.println(employee);
+                                }
                             }
-                            showMngOptions();
+                            showMainMenu();
+
                             break;
+                        case 6:
+                            System.out.println("Program Exited");
+                            showMainMenu();
                     }
                 }
 
@@ -209,7 +248,7 @@ public class Home extends Manager {
                 }
                 
             }
-            case 3->{
+            case 4->{
                 int userChoice;
                 System.out.print(
                         """

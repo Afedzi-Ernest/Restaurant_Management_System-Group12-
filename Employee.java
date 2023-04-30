@@ -11,12 +11,14 @@ public class Employee {
     int hours;
 
     static List<String> employeesList = new ArrayList<>();
+    static List<String> newemployeeList = new ArrayList<>();
     static List<String> employeespassword = new ArrayList<>();
+    static List<String> newemployeepassword = new ArrayList<>();
     static List<Integer> EmployeesId = new ArrayList<>();
 
     public static boolean verifyEmployee(String employeename){
-        employeesList = Manager.loadListFromFile(Manager.FILE_NAME);
-        for(String name : employeesList){
+        newemployeeList = Manager.loadListFromFile(Manager.FILE_NAME);
+        for(String name : newemployeeList){
             if(name.equals(employeename)){
                 return (true);
             }
@@ -24,9 +26,27 @@ public class Employee {
         return false;
     }
 
-    public static boolean verifyEmployeePassword(String employeepswd){
-        employeespassword= Manager.loadListFromFile(Manager.FILE_NAME2);
+    public static boolean veriryOldEmployee(String employeename){
+        for(String name :employeesList){
+            if(name.equals(employeename)){
+                return true;
+            }
+        }
+        return  false;
+    }
+
+    public static boolean verifyOldEmployeePassword(String employeepswd){
         for(String pswd : employeespassword){
+            if(pswd.equals(employeepswd)){
+                return (true);
+            }
+        }
+        return false;
+    }
+
+    public static boolean verifyEmployeePassword(String employeepswd){
+        newemployeepassword= Manager.loadListFromFile(Manager.FILE_NAME2);
+        for(String pswd : newemployeepassword){
             if(pswd.equals(employeepswd)){
                 return (true);
             }
@@ -54,33 +74,6 @@ public class Employee {
         setHours(hours);
 
     }
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public String getEmppassword() {
-        return emppassword;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-
-    public String getPosition() {
-        return position;
-    }
-
-    public int getHours() {
-        return hours;
-    }
-
-    public int getEmployeeSchedules(int ID){
-        return employeeId;
-    }
-    public int getEmployeeHours(int ID) {
-        return hours;
-    }
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
@@ -103,11 +96,7 @@ public class Employee {
 
 
 
-    public void displayEmpInfo(int ID){
-        System.out.println("Employee Id: " + employeeId +
-                " \n Name: " + Name + " \n Position: " + position
-        );
-    }
+
 
     public static void main(String[] args) {
     }
